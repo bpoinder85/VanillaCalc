@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+  <title>JavaScript Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%
+      font-family: "Helvetica", "Arial", sans-serif;
+    }
+　
+    #calc {
+      margin: 0 auto;
+      width: 150px;
+    }
+    　
+    #display {
+      width: 140px;
+      border: 1px solid black;
+    }
+    　
+    input[type=button] {
+     margin-right: 4px;
+     margin-top: 4px;
+     width: 30px;
+     height: 30px;
+     border: 1px solid black;
+     background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div style="margin-top: 10px; width: 100%;"></div>
+    <div id="calc">
+      <input type="text" id="display">
+      <input type="button" value="7" id="seven" class="number" onclick="one.addToString()">
+      <input type="button" value="8" id="eight" class="number">
+      <input type="button" value="9" id="nine" class="number">
+      <input type="button" value="+" id="plus" class="operator">
+      <input type="button" value="4" id="four" class="number">
+      <input type="button" value="5" id="five" class="number">
+      <input type="button" value="6" id="six" class="number">
+      <input type="button" value="-" id="minus" class="operator">
+      <input type="button" value="1" id="one" class="number">
+      <input type="button" value="2" id="two" class="number">
+      <input type="button" value="3" id="three" class="number">
+      <input type="button" value="*" id="multiply" class="operator">
+      <input type="button" value="0" id="zero" class="number">
+      <input type="button" value="C" id="clear" class="event">
+      <input type="button" value="=" id="equals" class="event">
+      <input type="button" value="/" id="divide" class="operator">
+    </div>
+  <script>
+    var obj = {
+      hello: function() {
+        alert("hello");
+      }
+    }
+    　
+    var displayString = "";
+    　
+    function Button(value) {
+      this.value = value;
+    }
+    　
+    Button.prototype.addToString = function() {
+      displayString = displayString + this.value;
+      display();
+    };
+    　
+    function display() {
+      document.getElementById("display").value = displayString;
+    }
+    　
+    function clear() {
+      displayString = "";
+      display();
+    }
+    　
+    function equals() {
+      if(isNaN(eval(document.getElementById("display").value))) {
+        alert("Please input a valid entry.");
+      } else {
+        displayString = eval(document.getElementById("display").value);
+        display();
+      }
+    }
+    　
+    function init() {
+      var oneButton = document.getElementById("one");
+      oneButton.onclick = one.addToString;
+    　
+      var twoButton = document.getElementById("two");
+      twoButton.onclick = two.addToString;
+    　
+      var threeButton = document.getElementById("three");
+      threeButton.onclick = three.addToString;
+    　
+      var fourButton = document.getElementById("four");
+      fourButton.onclick = four.addToString;
+    　
+      var fiveButton = document.getElementById("five");
+      fiveButton.onclick = five.addToString;
+    　
+      var sixButton = document.getElementById("six");
+      sixButton.onclick = six.addToString;
+    　
+      var sevenButton = document.getElementById("seven");
+      sevenButton.onclick = seven.addToString;
+    　
+      var eightButton = document.getElementById("eight");
+      eightButton.onclick = eight.addToString;
+    　
+      var nineButton = document.getElementById("nine");
+      nineButton.onclick = nine.addToString;
+    　
+      var zeroButton = document.getElementById("zero");
+      zeroButton.onclick = zero.addToString;
+    　
+      var plusButton = document.getElementById("plus");
+      plusButton.onclick = plus.addToString;
+    　
+      var minusButton = document.getElementById("minus");
+      minusButton.onclick = minus.addToString;
+    　
+      var multiplyButton = document.getElementById("multiply");
+      multiplyButton.onclick = multiply.addToString;
+    　
+      var divideButton = document.getElementById("divide");
+      divideButton.onclick = divide.addToString;
+    　
+      var clearButton = document.getElementById("clear");
+      clearButton.onclick = clear;
+      
+      var equalsButton = document.getElementById("equals");
+      equalsButton.onclick = equals;
+    　
+    }
+    　
+    var one = new Button(document.getElementById("one").value);
+    var two = new Button(document.getElementById("two").value);
+    var three = new Button(document.getElementById("three").value);
+    var four = new Button(document.getElementById("four").value);
+    var five = new Button(document.getElementById("five").value);
+    var six = new Button(document.getElementById("six").value);
+    var seven = new Button(document.getElementById("seven").value);
+    var eight = new Button(document.getElementById("eight").value);
+    var nine = new Button(document.getElementById("nine").value);
+    var zero = new Button(document.getElementById("zero").value);
+    var plus = new Button(document.getElementById("plus").value);
+    var minus = new Button(document.getElementById("minus").value);
+    var multiply = new Button(document.getElementById("multiply").value);
+    var divide = new Button(document.getElementById("divide").value);
+    　
+    window.onload = init;
+    　
+  </script>
+</body>
+</html>
